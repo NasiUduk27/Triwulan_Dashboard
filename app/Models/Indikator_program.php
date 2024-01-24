@@ -9,11 +9,11 @@ class Indikator_program extends Model
 {
     use HasFactory;
 
-    protected $table = 'indikator_program';
+    protected $table = 'indikator_programs';
 
     protected $fillable = [
         'nomor_rekening',
-        'program',
+        'nama_program',
         'indikator',
         'target',
         'satuan',
