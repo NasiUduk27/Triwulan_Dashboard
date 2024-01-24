@@ -12,8 +12,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Data Barang</a></li>
-                            <li class="breadcrumb-item active">Data Jaket</li>
+                            <li class="breadcrumb-item"><a href="#">Data Subkegiatan</a></li>
                         </ol>
                     </div>
                 </div>
@@ -57,6 +56,7 @@
 
 
                     <a href="{{ url('master_subkegiatan/create') }}" class="btn btn-sm btn-success my-2">Tambah Data</a>
+                    <button type="button" class="btn btn-sm btn-success my-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Open modal for</button>
 
                     <table class="table table-bordered table-striped">
                         <thead>

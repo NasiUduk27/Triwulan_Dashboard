@@ -73,7 +73,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/jaket') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}"
+                            <a href="{{ url('/master_subkegiatan') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}"
                                 class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Sub Kegiatan</p>
