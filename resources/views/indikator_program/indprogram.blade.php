@@ -8,12 +8,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Indikator Program</h1>
+                        <h1>Data Indikator Program</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Indikator Program</a></li>
-                            <li class="breadcrumb-item active">Indikator Program</li>
+                            <li class="breadcrumb-item"><a href="#">Data Indikator Program</a></li>
                         </ol>
                     </div>
                 </div>
@@ -57,17 +56,17 @@
 
 
                     <a href="{{ url('indikator_program/create') }}" class="btn btn-sm btn-success my-2">Tambah Data</a>
-
+                    
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>No Rekening</th>
-                                <th>Program</th>
+                                <th>Nomor Rekening </th>
+                                <th>Nama Program</th>
                                 <th>Indikator</th>
                                 <th>Target</th>
                                 <th>Satuan</th>
-                                <th>Pagu Anggaran</th>
+                                <th>Pagu</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -107,7 +106,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        {{ $indikator_program>links() }}
+                        {{ $indikator_program->links() }}
                     </div>
                 </div>
                 <!-- /.card-body -->
@@ -157,3 +156,4 @@
         }
     </script>
 @endpush
+
