@@ -40,7 +40,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('/anggotakelompok') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}"
+                    <a href="{{ url('/pengaturan') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}"
                         class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
@@ -107,7 +107,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/jaket') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}"
+                            <a href="{{ url('/indikator_kinerja') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}"
                                 class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Kinerja</p>

@@ -9,11 +9,11 @@ class Indikator_kinerja extends Model
 {
     use HasFactory;
 
-    protected $table = 'indikator_kinerja';
+    protected $table = 'indikator_kinerjas';
 
     protected $fillable = [
         'nomor_rekening',
-        'kegiatan',
+        'sub_kegiatan',
         'indikator',
         'target',
         'satuan',
