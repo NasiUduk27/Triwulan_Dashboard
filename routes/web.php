@@ -3,6 +3,7 @@
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\IndikatorProgramController;
 use App\Http\Controllers\JaketController;
 use App\Http\Controllers\OthersController;
 use App\Http\Controllers\PendakiController;
@@ -35,7 +36,9 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('/sepatu', SepatuController::class);
     Route::resource('/sb', SleepingBagController::class);
     Route::resource('/others', OthersController::class);
+
 });
+Route::resource('/indikator_program', IndikatorProgramController::class);
 
 Route::get('logout', [LoginController::class, 'logout']);
 
