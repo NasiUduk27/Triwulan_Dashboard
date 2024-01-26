@@ -40,7 +40,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('/anggotakelompok') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}"
+                    <a href="{{ url('/pengaturan') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}"
                         class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
@@ -73,8 +73,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/master/subkegiatan') }}"
-                                class="nav-link {{ request()->is('/') ? 'active' : '' }}" class="nav-link">
+                            <a href="{{ url('/master_subkegiatan') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}"
+                                class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Sub Kegiatan</p>
                             </a>
@@ -93,7 +93,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ url('/datatenda') }}"
+                            <a href="{{ url('/indikator_program') }}"
                                 class="nav-link {{ request()->is('/') ? 'active' : '' }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Program</p>
@@ -107,7 +107,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/jaket') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}"
+                            <a href="{{ url('/indikator_kinerja') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}"
                                 class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Kinerja</p>

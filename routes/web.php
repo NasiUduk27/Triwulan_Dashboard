@@ -3,9 +3,9 @@
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\IndikatorKegiatanController;
+use App\Http\Controllers\IndikatorProgramController;
 use App\Http\Controllers\JaketController;
-use App\Http\Controllers\KegiatanController;
+use App\Http\Controllers\MasterSubController;
 use App\Http\Controllers\OthersController;
 use App\Http\Controllers\PendakiController;
 use App\Http\Controllers\SepatuController;
@@ -38,12 +38,11 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/sepatu', SepatuController::class);
     Route::resource('/sb', SleepingBagController::class);
     Route::resource('/others', OthersController::class);
+
+    Route::resource('/master_subkegiatan', MasterSubController::class);
+
 });
-
-Route::resource('master/kegiatan', KegiatanController::class);
-Route::resource('/indkegiatan', IndikatorKegiatanController::class);
-//Route::resources('indkegiatan/create',IndikatorKegiatanController::class)
-
+Route::resource('/indikator_program', IndikatorProgramController::class);
 
 Route::get('logout', [LoginController::class, 'logout']);
 

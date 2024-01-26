@@ -12,9 +12,6 @@ class Pengaturan extends Model
     protected $table = 'pengaturan';
 
     protected $fillable = [
-        'NIK',
-        'nama',
-        'alamat',
-        'no_hp',
+        'triwulan',
     ];
 }
