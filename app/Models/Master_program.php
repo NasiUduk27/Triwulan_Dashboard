@@ -9,7 +9,7 @@ class Master_program extends Model
 {
     use HasFactory;
 
-    protected $table = 'master_program';
+    protected $table = 'master_programs';
 
     protected $fillable = [
         'nomor_rekening',

@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Indikator Program</h1>
+                        <h1>Master Program</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Indikator Program</a></li>
-                            <li class="breadcrumb-item active">Indikator Program</li>
+                            <li class="breadcrumb-item"><a href="#">Master Program</a></li>
+                            <li class="breadcrumb-item active">Master Program</li>
                         </ol>
                     </div>
                 </div>
@@ -48,39 +48,39 @@
 
                     <div class="row g-3 align-items-center">
                         <div class="col-auto">
-                            <form action="/program" method="GET">
-                                <input type="program" id="program" name="program" class="form-control"
+                            <form action="/master_program" method="GET">
+                                <input type="master_program" id="master_program" name="master_program" class="form-control"
                                     placeholder="Cari...">
                             </form>
                         </div>
                     </div>
 
 
-                    <a href="{{ url('program/create') }}" class="btn btn-sm btn-success my-2">Tambah Data</a>
+                    <a href="{{ url('master_program/create') }}" class="btn btn-sm btn-success my-2">Tambah Data</a>
 
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>No Rekening</th>
-                                <th>Program</th>
+                                <th>Nomor Rekening</th>
+                                <th>Nama Program</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if ($program->count() > 0)
-                                @foreach ($program as $i => $t)
+                            @if ($master_program->count() > 0)
+                                @foreach ($master_program as $i => $t)
                                     <tr>
                                         <td>{{ ++$i }}</td>
-                                        <td>{{ $t->merk_program }}</td>
-                                        <td>{{ $t->warna }}</td>
-                                        <td>{{ $t->sewaperhari }}</td>
+                                        <td>{{ $t->nomor_rekening }}</td>
+                                        <td>{{ $t->nama_program }}</td>
+
                                         <td>
                                             <!-- Bikin tombol edit dan delete -->
-                                            <a href="{{ url('/program/' . $t->id . '/edit') }}"
+                                            <a href="{{ url('/master_program/' . $t->id . '/edit') }}"
                                                 class="btn btn-sm btn-warning">edit</a>
 
-                                            <form method="POST" action="{{ url('/program/' . $t->id) }}">
+                                            <form method="POST" action="{{ url('/master_program/' . $t->id) }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-danger"
@@ -100,7 +100,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        {{ $program->links() }}
+                        {{ $master_program->links() }}
                     </div>
                 </div>
                 <!-- /.card-body -->

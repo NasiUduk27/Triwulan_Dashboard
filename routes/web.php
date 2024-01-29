@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndikatorProgramController;
 use App\Http\Controllers\JaketController;
+use App\Http\Controllers\MasterProgramController;
 use App\Http\Controllers\MasterSubController;
 use App\Http\Controllers\OthersController;
 use App\Http\Controllers\PendakiController;
@@ -39,9 +40,11 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('/others', OthersController::class);
 
     Route::resource('/master_subkegiatan', MasterSubController::class);
+    Route::resource('/master_program', MasterProgramController::class);
 
 });
 Route::resource('/indikator_program', IndikatorProgramController::class);
+
 
 Route::get('logout', [LoginController::class, 'logout']);
 

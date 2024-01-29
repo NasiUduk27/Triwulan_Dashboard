@@ -41,7 +41,7 @@
         <div class="card-body">
             <form method="POST" action="{{ $url_form }}">
                 @csrf
-                {!! (isset($program))? method_field('PUT') : '' !!}
+                {!! (isset($master_program))? method_field('PUT') : '' !!}
 
                 <div class="form-group">
                     <label>Pilih Tahun</label>
@@ -52,7 +52,7 @@
                             $startYear = 2022; // Tahun awal
                         @endphp
                         @for($year = $currentYear; $year >= $startYear; $year--)
-                            <option value="{{ $year }}" {{ isset($program) && $program->tahun == $year ? 'selected' : '' }}>{{ $year }}</option>
+                            <option value="{{ $year }}" {{ isset($master_program) && $master_program->tahun == $year ? 'selected' : '' }}>{{ $year }}</option>
                         @endfor
                     </select>
                     @error('tahun')
@@ -62,7 +62,7 @@
 
                 <div class="form-group">
                     <label>No Rekening</label>
-                    <input class="form-control @error('no_rek') is-invalid @enderror" value="{{ isset($program)? $program->no_rek : old('no_rek') }}" name="no_rek" type="text" />
+                    <input class="form-control @error('no_rek') is-invalid @enderror" value="{{ isset($master_program)? $master_program->no_rek : old('no_rek') }}" name="no_rek" type="text" />
                     @error('no_rek')
                         <span class="error invalid-feedback">{{ $message }} </span>
                     @enderror
@@ -70,8 +70,8 @@
 
                 <div class="form-group">
                     <label>Nama Program</label>
-                    <input class="form-control @error('program') is-invalid @enderror" value="{{ isset($program)? $program->program : old('program') }}" name="program" type="text"/>
-                    @error('program')
+                    <input class="form-control @error('master_program') is-invalid @enderror" value="{{ isset($master_program)? $master_program->master_program : old('master_program') }}" name="master_program" type="text"/>
+                    @error('master_program')
                         <span class="error invalid-feedback">{{ $message }} </span>
                     @enderror
                 </div>
