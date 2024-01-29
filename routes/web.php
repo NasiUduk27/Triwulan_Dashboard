@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\IndikatorKegiatanController;
 use App\Http\Controllers\IndikatorKinerjaController;
 use App\Http\Controllers\IndikatorProgramController;
 use App\Http\Controllers\MasterProgramController;
@@ -28,13 +29,25 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index']);
 
     Route::resource('/master_subkegiatan', MasterSubController::class);
+<<<<<<< HEAD
+});
+// Route::resource('/indikator_program', IndikatorProgramController::class);
+// Route::resource('/indikator_kegiatan', IndikatorKegiatanController::class);
+// Route::resource('/kegiatan', KegiatanController::class);
+=======
+<<<<<<< HEAD
     Route::resource('/indikator_program', IndikatorProgramController::class);
     Route::resource('/indikator_kinerja', IndikatorKinerjaController::class);
     Route::resource('/pengaturan', PengaturanController::class);
     Route::resource('/master_program', MasterProgramController::class);
+    Route::resource('/indikator_kegiatan', IndikatorKegiatanController::class);
 
 });
+// Route::resource('/indikator_program', IndikatorProgramController::class);
+// Route::resource('/indikator_kegiatan', IndikatorKegiatanController::class);
+// Route::resource('/kegiatan', KegiatanController::class);
 
+  
 
 
 Route::get('logout', [LoginController::class, 'logout']);
