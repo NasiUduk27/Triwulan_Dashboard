@@ -9,10 +9,12 @@ use App\Http\Controllers\MasterProgramController;
 use App\Http\Controllers\MasterSubController;
 use App\Http\Controllers\OthersController;
 use App\Http\Controllers\PendakiController;
+use App\Http\Controllers\RealisasiController;
 use App\Http\Controllers\SepatuController;
 use App\Http\Controllers\SleepingBagController;
 use App\Http\Controllers\TendaController;
 use App\Models\Indikator_kegiatan;
+use App\Models\Realisasi;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -40,11 +42,14 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/sb', SleepingBagController::class);
     Route::resource('/others', OthersController::class);
 
+    Route::resource('/realisasi', RealisasiController::class);
     Route::resource('/master_subkegiatan', MasterSubController::class);
     Route::resource('/master_program', MasterProgramController::class);
 
+
 });
 Route::resource('/indikator_program', IndikatorProgramController::class);
+
 
 
 Route::get('logout', [LoginController::class, 'logout']);
