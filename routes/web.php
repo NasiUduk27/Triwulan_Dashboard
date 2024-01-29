@@ -12,6 +12,7 @@ use App\Http\Controllers\PendakiController;
 use App\Http\Controllers\SepatuController;
 use App\Http\Controllers\SleepingBagController;
 use App\Http\Controllers\TendaController;
+use App\Models\Indikator_kegiatan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,7 +29,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index']);
     Route::get('/anggotakelompok', [AnggotaController::class, 'index']);
     Route::resource('/datatenda', TendaController::class);
@@ -59,5 +60,3 @@ Route::get('logout', [LoginController::class, 'logout']);
 // Route::resource('/sb', SleepingBagController::class);
 // Route::resource('/others', OthersController::class);
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-

@@ -1,8 +1,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="../../index3.html" class="brand-link">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Logo_of_Ministry_of_Communication_and_Information_Technology_of_the_Republic_of_Indonesia.svg/483px-Logo_of_Ministry_of_Communication_and_Information_Technology_of_the_Republic_of_Indonesia.svg.png" alt="AdminLTE Logo"
-            class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Logo_of_Ministry_of_Communication_and_Information_Technology_of_the_Republic_of_Indonesia.svg/483px-Logo_of_Ministry_of_Communication_and_Information_Technology_of_the_Republic_of_Indonesia.svg.png"
+            alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">DISKOMINFO</span>
     </a>
 
@@ -40,7 +40,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('/anggotakelompok') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}"
+                    <a href="{{ url('/pengaturan') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}"
                         class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
@@ -59,15 +59,15 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ url('/datatenda') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}"
-                                class="nav-link">
+                            <a href="{{ url('/master/program') }}"
+                                class="nav-link {{ request()->is('/') ? 'active' : '' }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Program</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/sb') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}"
-                                class="nav-link">
+                            <a href="{{ url('/master/kegiatan') }}"
+                                class="nav-link {{ request()->is('/') ? 'active' : '' }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Kegiatan</p>
                             </a>
@@ -107,7 +107,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/jaket') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}"
+                            <a href="{{ url('/indikator_kinerja') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}"
                                 class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Kinerja</p>
