@@ -56,7 +56,6 @@
 
 
                     <a href="{{ url('master_subkegiatan/create') }}" class="btn btn-sm btn-success my-2">Tambah Data</a>
-                    <button type="button" class="btn btn-sm btn-success my-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Open modal for</button>
 
                     <table class="table table-bordered table-striped">
                         <thead>

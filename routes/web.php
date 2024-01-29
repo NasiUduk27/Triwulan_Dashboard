@@ -1,19 +1,12 @@
 <?php
 
-use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndikatorKinerjaController;
 use App\Http\Controllers\IndikatorProgramController;
-use App\Http\Controllers\JaketController;
 use App\Http\Controllers\MasterProgramController;
 use App\Http\Controllers\MasterSubController;
-use App\Http\Controllers\OthersController;
-use App\Http\Controllers\PendakiController;
 use App\Http\Controllers\PengaturanController;
-use App\Http\Controllers\SepatuController;
-use App\Http\Controllers\SleepingBagController;
-use App\Http\Controllers\TendaController;
 use App\Models\Indikator_kegiatan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -35,14 +28,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index']);
 
     Route::resource('/master_subkegiatan', MasterSubController::class);
-<<<<<<< HEAD
     Route::resource('/indikator_program', IndikatorProgramController::class);
     Route::resource('/indikator_kinerja', IndikatorKinerjaController::class);
     Route::resource('/pengaturan', PengaturanController::class);
-=======
     Route::resource('/master_program', MasterProgramController::class);
 
->>>>>>> 9a98dda07e7ec9862aa085a128a2e395ca828df0
 });
 
 
