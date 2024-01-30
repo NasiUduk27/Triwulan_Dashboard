@@ -60,24 +60,51 @@
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Program</th>
-                                <th>Sub Kegiatan</th>
-                                <th>Target</th>
-                                <th>Pagu</th>
-                                <th>Action</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th colspan="8" style="text-align: center;">Realisasi</th>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @if ($realisasi->count() > 0)
-                                @foreach ($realisasi as $i => $t)
-                                    <tr>
-                                        <td>{{ ++$i }}</td>
-                                        <td>{{ $t->program }}</td>
-                                        <td>{{ $t->sub_kegiatan}}</td>
-                                        <td>{{ $t->target }}</td>
-                                        <td>{{ $t->pagu }}</td>
+                            <tr>
+                                <th rowspan="2" style="text-align: center;">Program</th>
+                                <th rowspan="2" style="text-align: center;">Sub Kegiatan</th>
+                                <th rowspan="2" style="text-align: center;">Target</th>
+                                <th rowspan="2" style="text-align: center;">Pagu</th>
+                                <th colspan="2">Triwulan 1</th>
+                                <th colspan="2">Triwulan 2</th>
+                                <th colspan="2">Triwulan 3</th>
+                                <th colspan="2">Triwulan 4</th>
+                                <th rowspan="2">Keterangan</th>
+                                <th rowspan="2">Aksi</th>
 
+                            </tr>
+                            <tr>
+                                <th>Kinerja</th>
+                                <th>Anggaran</th>
+                                <th>Kinerja</th>
+                                <th>Anggaran</th>
+                                <th>Kinerja</th>
+                                <th>Anggaran</th>
+                                <th>Kinerja</th>
+                                <th>Anggaran</th>
+                            <tr>
+
+                            </thead>
+                            <tbody>
+                                @if ($realisasi->count() > 0)
+                                @foreach ($realisasi as $i => $t)
+                                {{-- <tr>
+                                    <th>Kinerja</th>
+                                    <th>Anggaran</th>
+                                    <th>Kinerja</th>
+                                    <th>Anggaran</th>
+                                    <th>Kinerja</th>
+                                    <th>Anggaran</th>
+                                    <th>Kinerja</th>
+                                    <th>Anggaran</th> --}}
+
+                                    {{-- <td>
                                             <!-- Bikin tombol edit dan delete -->
                                             <a href="{{ url('/realisasi/' . $t->id . '/edit') }}"
                                                 class="btn btn-sm btn-warning">edit</a>
@@ -88,8 +115,8 @@
                                                 <button type="submit" class="btn btn-sm btn-danger"
                                                     onclick="confirmDelete()">hapus</button>
                                             </form>
-                                        </td>
-                                    </tr>
+                                        </td> --}}
+                                </tr>
                                 @endforeach
                             @else
                                 <tr>
