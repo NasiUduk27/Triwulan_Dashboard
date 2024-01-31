@@ -85,6 +85,14 @@
                                                 <td>llala</td>
                                                 <td>xxxcx</td>
                                                 <td>ssw</td>
+                                                <td>...</td>
+                                                <td>////</td>
+                                                <td>....</td>
+                                                <td>...</td>
+                                                <td>////</td>
+                                                <td>....</td>
+                                                <td>///</td>
+                                                <td>...</td>
                                                 <td>
                                                     <a href="" class="btn btn-sm btn-danger">Hapus</a>
                                                     <a href="" class="btn btn-sm btn-warning">Edit</a>
