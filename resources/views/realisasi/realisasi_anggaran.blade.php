@@ -8,11 +8,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Data SubKegiatan</h1>
+                        <h1>Realisasi Anggaran</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Data Subkegiatan</a></li>
+                            <li class="breadcrumb-item"><a href="#">Realisasi Anggaran</a></li>
                         </ol>
                     </div>
                 </div>
@@ -47,53 +47,76 @@
 
                     <div class="row g-3 align-items-center">
                         <div class="col-auto">
-                            <form action="/master_subkegiatan" method="GET">
-                                <input type="master_subkegiatan" id="master_subkegiatan" name="master_subkegiatan" class="form-control"
+                            <form action="/realisasi" method="GET">
+                                <input type="realisasi" id="realisasi" name="realisasi" class="form-control"
                                     placeholder="Cari...">
                             </form>
                         </div>
                     </div>
 
-
-                    <a href="{{ url('master_subkegiatan/create') }}" class="btn btn-sm btn-success my-2">Tambah Data</a>
+{{--
+                    <a href="{{ url('realisasi/create') }}" class="btn btn-sm btn-success my-2">Tambah Data</a> --}}
 
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Rekening Program</th>
-                                <th>Nama Program</th>
-                                <th>Rekening Kegiatan</th>
-                                <th>Nama Kegiatan</th>
-                                <th>Rekening Subkegiatan</th>
-                                <th>Nama Subkegiatan</th>
-                                <th>Action</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th colspan="8" style="text-align: center;">Realisasi</th>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @if ($master_subkegiatan->count() > 0)
-                                @foreach ($master_subkegiatan as $i => $t)
-                                    <tr>
-                                        <td>{{ ++$i }}</td>
-                                        <td>{{ $t->rekening_program }}</td>
-                                        <td>{{ $t->nama_program }}</td>
-                                        <td>{{ $t->rekening_kegiatan }}</td>
-                                        <td>{{ $t->nama_kegiatan }}</td>
-                                        <td>{{ $t->rekening_subkegiatan }}</td>
-                                        <td>{{ $t->nama_subkegiatan }}</td>
-                                        <td>
+                            <tr>
+                                <th rowspan="2" style="text-align: center;">Program</th>
+                                <th rowspan="2" style="text-align: center;">Sub Kegiatan</th>
+                                <th rowspan="2" style="text-align: center;">Target</th>
+                                <th rowspan="2" style="text-align: center;">Pagu</th>
+                                <th colspan="2">Triwulan 1</th>
+                                <th colspan="2">Triwulan 2</th>
+                                <th colspan="2">Triwulan 3</th>
+                                <th colspan="2">Triwulan 4</th>
+                                <th rowspan="2">Keterangan</th>
+                                <th rowspan="2">Aksi</th>
+
+                            </tr>
+                            <tr>
+                                <th>Kinerja</th>
+                                <th>Anggaran</th>
+                                <th>Kinerja</th>
+                                <th>Anggaran</th>
+                                <th>Kinerja</th>
+                                <th>Anggaran</th>
+                                <th>Kinerja</th>
+                                <th>Anggaran</th>
+                            <tr>
+
+                            </thead>
+                            <tbody>
+                                @if ($realisasi->count() > 0)
+                                @foreach ($realisasi as $i => $t)
+                                {{-- <tr>
+                                    <th>Kinerja</th>
+                                    <th>Anggaran</th>
+                                    <th>Kinerja</th>
+                                    <th>Anggaran</th>
+                                    <th>Kinerja</th>
+                                    <th>Anggaran</th>
+                                    <th>Kinerja</th>
+                                    <th>Anggaran</th> --}}
+
+                                    <td>
                                             <!-- Bikin tombol edit dan delete -->
-                                            <a href="{{ url('/master_subkegiatan/' . $t->id . '/edit') }}"
+                                            <a href="{{ url('/realisasi/' . $t->id . '/edit') }}"
                                                 class="btn btn-sm btn-warning">edit</a>
 
-                                            <form method="POST" action="{{ url('/master_subkegiatan/' . $t->id) }}">
+                                            <form method="POST" action="{{ url('/realisasi/' . $t->id) }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-danger"
                                                     onclick="confirmDelete()">hapus</button>
                                             </form>
                                         </td>
-                                    </tr>
+                                </tr>
                                 @endforeach
                             @else
                                 <tr>
@@ -106,7 +129,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        {{ $master_subkegiatan->links() }}
+                        {{ $realisasi->links() }}
                     </div>
                 </div>
                 <!-- /.card-body -->
@@ -156,3 +179,4 @@
         }
     </script>
 @endpush
+

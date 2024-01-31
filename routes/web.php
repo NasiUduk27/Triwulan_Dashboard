@@ -6,10 +6,22 @@ use App\Http\Controllers\IndikatorKegiatanController;
 use App\Http\Controllers\IndikatorProgramController;
 use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\IndikatorKinerjaController;
+use App\Http\Controllers\IndikatorProgramController;
 use App\Http\Controllers\MasterProgramController;
 use App\Http\Controllers\MasterSubController;
+<<<<<<< HEAD
+use App\Http\Controllers\OthersController;
+use App\Http\Controllers\PendakiController;
+use App\Http\Controllers\RealisasiController;
+use App\Http\Controllers\SepatuController;
+use App\Http\Controllers\SleepingBagController;
+use App\Http\Controllers\TendaController;
+=======
+use App\Http\Controllers\PengaturanController;
+>>>>>>> bb1de1f0e658e6c5a480f7e346333e063cc04d89
 use App\Http\Controllers\PengaturanController;
 use App\Models\Indikator_kegiatan;
+use App\Models\Realisasi;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -29,16 +41,25 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index']);
 
+    Route::resource('/realisasi', RealisasiController::class);
     Route::resource('/master_subkegiatan', MasterSubController::class);
 });
 // Route::resource('/indikator_program', IndikatorProgramController::class);
 // Route::resource('/indikator_kegiatan', IndikatorKegiatanController::class);
-//Route::resource('/kegiatan', KegiatanController::class);
+// Route::resource('/kegiatan', KegiatanController::class);
+=======
+<<<<<<< HEAD
+    Route::resource('/indikator_program', IndikatorProgramController::class);
+    Route::resource('/indikator_kinerja', IndikatorKinerjaController::class);
+    Route::resource('/pengaturan', PengaturanController::class);
+=======
+    Route::resource('/master_program', MasterProgramController::class);
 
-Route::resource('/indikator_program', IndikatorProgramController::class);
-Route::resource('/indikator_kinerja', IndikatorKinerjaController::class);
-Route::resource('/pengaturan', PengaturanController::class);
-Route::resource('/master_program', MasterProgramController::class);
+>>>>>>> 9a98dda07e7ec9862aa085a128a2e395ca828df0
+});
+
+
+>>>>>>> 4b945b04b6872953ba93d757941ae76cdafa4335
 
 Route::get('logout', [LoginController::class, 'logout']);
 

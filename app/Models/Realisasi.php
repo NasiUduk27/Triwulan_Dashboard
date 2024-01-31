@@ -9,7 +9,7 @@ class Realisasi extends Model
 {
     use HasFactory;
 
-    protected $table = 'realisasi';
+    protected $table = 'realisasis';
 
     protected $fillable = [
         'nama_program',
