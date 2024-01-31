@@ -12,6 +12,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('assets/dist/css/adminlte.min.css')}}">
   @stack('custom_css')
+  <link rel="icon" href="{{ asset('assets/img/logo-pemkab.svg') }}">
 </head>
 
 <body class="hold-transition sidebar-mini">

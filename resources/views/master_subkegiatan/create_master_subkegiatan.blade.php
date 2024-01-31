@@ -43,6 +43,23 @@
                     {!! isset($master_subkegiatan) ? method_field('PUT') : '' !!}
 
                     <div class="form-group">
+                        <label>Tahun Anggaran</label>
+                        <select class="form-control @error('tahun') is-invalid @enderror" name="tahun">
+                            <option value="" selected disabled>Pilih Tahun</option>
+                            @php
+                                $currentYear = date('Y');
+                                $startYear = 2022; // Tahun awal
+                            @endphp
+                            @for($year = $currentYear; $year >= $startYear; $year--)
+                                <option value="{{ $year }}" {{ isset($master_subkegiatan) && $master_subkegiatan->tahun == $year ? 'selected' : '' }}>{{ $year }}</option>
+                            @endfor
+                        </select>
+                        @error('tahun')
+                            <span class="error invalid-feedback">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
                         <label>Nomor Rekening</label>
                         <input class="form-control @error('rekening_program') is-invalid @enderror"
                             value="{{ isset($master_subkegiatan) ? $master_subkegiatan->rekening_program : old('rekening_program') }}"

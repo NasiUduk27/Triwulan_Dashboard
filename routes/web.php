@@ -29,13 +29,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index']);
 
     Route::resource('/master_subkegiatan', MasterSubController::class);
-<<<<<<< HEAD
-});
-// Route::resource('/indikator_program', IndikatorProgramController::class);
-// Route::resource('/indikator_kegiatan', IndikatorKegiatanController::class);
-// Route::resource('/kegiatan', KegiatanController::class);
-=======
-<<<<<<< HEAD
     Route::resource('/indikator_program', IndikatorProgramController::class);
     Route::resource('/indikator_kinerja', IndikatorKinerjaController::class);
     Route::resource('/pengaturan', PengaturanController::class);
@@ -46,7 +39,6 @@ Route::middleware(['auth'])->group(function () {
 // Route::resource('/indikator_program', IndikatorProgramController::class);
 // Route::resource('/indikator_kegiatan', IndikatorKegiatanController::class);
 // Route::resource('/kegiatan', KegiatanController::class);
-
   
 
 

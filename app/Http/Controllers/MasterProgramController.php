@@ -44,6 +44,7 @@ class MasterProgramController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'tahun' => 'required|string|max:4',
             'nomor_rekening' => 'required|string|max:30',
             'nama_program' => 'required|string|max:20',
 
@@ -89,6 +90,7 @@ class MasterProgramController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'tahun' => 'required|string|max:4',
             'nomor_rekening' => 'required|string|max:30',
             'nama_program' => 'required|string|max:20',
 

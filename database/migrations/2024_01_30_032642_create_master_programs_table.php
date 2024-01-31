@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('master_programs', function (Blueprint $table) {
             $table->id();
+            $table->string('tahun');
             $table->string('nomor_rekening');
             $table->string('nama_program');
             $table->timestamps();

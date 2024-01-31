@@ -51,15 +51,14 @@
                             $currentYear = date('Y');
                             $startYear = 2022; // Tahun awal
                         @endphp
-                        @for($year = $currentYear; $year >= $startYear; $year--)
-                            <option value="{{ $year }}" {{ isset($master_program) && $master_program->tahun == $year ? 'selected' : '' }}>{{ $year }}</option>
+                        @for($tahun = $currentYear; $tahun >= $startYear; $tahun--)
+                            <option value="{{ $tahun }}" {{ isset($master_program) && $master_program->tahun == $tahun ? 'selected' : '' }}>{{ $tahun }}</option>
                         @endfor
                     </select>
                     @error('tahun')
                         <span class="error invalid-feedback">{{ $message }}</span>
                     @enderror
                 </div>
-
                 <div class="form-group">
                     <label>No Rekening</label>
                     <input class="form-control @error('no_rek') is-invalid @enderror" value="{{ isset($master_program)? $master_program->no_rek : old('no_rek') }}" name="no_rek" type="text" />

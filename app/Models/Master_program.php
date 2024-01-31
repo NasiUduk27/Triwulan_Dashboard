@@ -12,6 +12,7 @@ class Master_program extends Model
     protected $table = 'master_programs';
 
     protected $fillable = [
+        'tahun',
         'nomor_rekening',
         'nama_program',
     ];
