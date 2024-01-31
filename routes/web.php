@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\IndikatorKegiatanController;
 use App\Http\Controllers\IndikatorProgramController;
 use App\Http\Controllers\KegiatanController;
@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', [HomeController::class, 'index']);
+    Route::get('/', [BerandaController::class, 'index']);
     Route::resource('/master_program', MasterProgramController::class);
     Route::resource('/master_kegiatan', KegiatanController::class);
     Route::resource('/master_subkegiatan', MasterSubController::class);
