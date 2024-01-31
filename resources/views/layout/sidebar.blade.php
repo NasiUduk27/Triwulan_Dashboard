@@ -32,7 +32,7 @@
                 <li class="nav-item">
                     <a href="{{ url('/') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}"
                         class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-home"></i>
                         <p>
                             Dashboard
                         </p>
@@ -42,7 +42,7 @@
                 <li class="nav-item">
                     <a href="{{ url('/pengaturan') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}"
                         class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
+                        <i class="nav-icon fas fa-cogs"></i>
                         <p>
                             Pengaturan
                         </p>
@@ -61,21 +61,21 @@
                         <li class="nav-item">
                             <a href="{{ url('/master_program') }}"
                                 class="nav-link {{ request()->is('/') ? 'active' : '' }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-file nav-icon"></i>
                                 <p>Program</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/master_kegiatan') }}"
                                 class="nav-link {{ request()->is('/') ? 'active' : '' }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-file nav-icon"></i>
                                 <p>Kegiatan</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/master_subkegiatan') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}"
                                 class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-file nav-icon"></i>
                                 <p>Sub Kegiatan</p>
                             </a>
                         </li>
@@ -85,7 +85,7 @@
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-copy"></i>
+                        <i class="nav-icon fas fa-grip-horizontal"></i>
                         <p>
                             Indikator
                             <i class="fas fa-angle-left right"></i>
@@ -118,9 +118,9 @@
 
 
                 <li class="nav-item">
-                    <a href="{{ url('/anggotakelompok') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}"
+                    <a href="{{ url('/realisasi') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}"
                         class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
+                        <i class="nav-icon fas fa-money-check-alt"></i>
                         <p>
                             Realisasi Anggaran
                         </p>

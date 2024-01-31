@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jaket;
+use App\Models\Master_kegiatan;
 use Illuminate\Http\Request;
 
 class KegiatanController extends Controller
@@ -24,7 +25,7 @@ class KegiatanController extends Controller
      */
     public function create()
     {
-        $data = Jaket::select('merk_jaket')->get();
+        $data = Master_kegiatan::select('merk_jaket')->get();
 
         return view('master_kegiatan.create_kegiatan')
             ->with('url_form', url('/kegiatan'))->with('data', $data);
