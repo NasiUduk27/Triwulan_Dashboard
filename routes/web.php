@@ -10,7 +10,6 @@ use App\Http\Controllers\MasterProgramController;
 use App\Http\Controllers\MasterSubController;
 use App\Http\Controllers\PengaturanController;
 use App\Http\Controllers\RealisasiController;
-use App\Http\Controllers\RealisasiController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -34,10 +33,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/master_subkegiatan', MasterSubController::class);
     Route::resource('/indikator_program', IndikatorProgramController::class);
     Route::resource('/indikator_kegiatan', IndikatorKegiatanController::class);
-    Route::resource('/indikator_kegiatan', IndikatorKegiatanController::class);
     Route::resource('/indikator_kinerja', IndikatorKinerjaController::class);
     Route::resource('/pengaturan', PengaturanController::class);
-    Route::resource('/realisasi', RealisasiController::class);
     Route::resource('/realisasi', RealisasiController::class);
 
 });
