@@ -54,8 +54,8 @@
                         </div>
                     </div>
 
-
-                    <a href="{{ url('realisasi/create') }}" class="btn btn-sm btn-success my-2">Tambah Data</a>
+{{--
+                    <a href="{{ url('realisasi/create') }}" class="btn btn-sm btn-success my-2">Tambah Data</a> --}}
 
                     <table class="table table-bordered table-striped">
                         <thead>
@@ -104,7 +104,7 @@
                                     <th>Kinerja</th>
                                     <th>Anggaran</th> --}}
 
-                                    {{-- <td>
+                                    <td>
                                             <!-- Bikin tombol edit dan delete -->
                                             <a href="{{ url('/realisasi/' . $t->id . '/edit') }}"
                                                 class="btn btn-sm btn-warning">edit</a>
@@ -115,7 +115,7 @@
                                                 <button type="submit" class="btn btn-sm btn-danger"
                                                     onclick="confirmDelete()">hapus</button>
                                             </form>
-                                        </td> --}}
+                                        </td>
                                 </tr>
                                 @endforeach
                             @else

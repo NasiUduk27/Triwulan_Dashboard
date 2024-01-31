@@ -31,8 +31,8 @@ class RealisasiController extends Controller
      */
     public function create()
     {
-        return view('realisasi.create_realisasi')
-                    ->with('url_form', url('/realisasi'));
+        // return view('realisasi.create_realisasi')
+        //             ->with('url_form', url('/realisasi'));
     }
 
       /**
