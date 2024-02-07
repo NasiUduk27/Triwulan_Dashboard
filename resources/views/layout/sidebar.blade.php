@@ -73,8 +73,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/master_subkegiatan') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}"
-                                class="nav-link">
+                            <a href="{{ url('/master_subkegiatan') }}"
+                                class="nav-link {{ request()->is('/') ? 'active' : '' }}" class="nav-link">
                                 <i class="fas fa-file nav-icon"></i>
                                 <p>Sub Kegiatan</p>
                             </a>
@@ -100,15 +100,15 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/indikator_kegiatan') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}"
-                                class="nav-link">
+                            <a href="{{ url('/indikator_kegiatan') }}"
+                                class="nav-link {{ request()->is('/') ? 'active' : '' }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Kegiatan</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/indikator_kinerja') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}"
-                                class="nav-link">
+                            <a href="{{ url('/indikator_kinerja') }}"
+                                class="nav-link {{ request()->is('/') ? 'active' : '' }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Kinerja</p>
                             </a>

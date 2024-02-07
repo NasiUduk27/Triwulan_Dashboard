@@ -39,4 +39,3 @@ Route::middleware(['auth'])->group(function () {
 
 });
 Route::get('logout', [LoginController::class, 'logout']);
-
