@@ -127,6 +127,10 @@ a {
     padding: 20px;
 }
 
+.desc-form {
+    color: var(--main-text-color);
+}
+
 a:hover {
     color: var(--main-text-color);
 }

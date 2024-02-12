@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('master_programs', function (Blueprint $table) {
+        Schema::create('bidang', function (Blueprint $table) {
             $table->id();
-            $table->string('tahun');
-            $table->string('nomor_rekening');
-            $table->string('nama_program');
+            $table->string('nama_bidang');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('master_programs');
+        Schema::dropIfExists('bidang');
     }
 };
