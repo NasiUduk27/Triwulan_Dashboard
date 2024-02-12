@@ -17,7 +17,7 @@ class MasterProgramController extends Controller
         if($request->has('master_program')){
             $master_program = Master_program::where('nama_program', 'LIKE', $request->master_program.'%')->paginate(2)->withQueryString();
         }else{
-            $master_program = Master_program::paginate(2);
+            $master_program = Master_program::paginate(10);
         }
         return view('master_program.masprogram', [
             'master_program' => $master_program
@@ -45,12 +45,15 @@ class MasterProgramController extends Controller
     {
         $request->validate([
             'tahun' => 'required|string|max:4',
-            'nomor_rekening' => 'required|string|max:30',
-            'nama_program' => 'required|string|max:20',
+            'no_rek' => 'required|string|max:30',
+            'master_program' => 'required|string|max:20',
 
         ]);
-
-        $data = Master_program::create($request->except(['_token']));
+        Master_program::create([
+            'tahun' => $request->post('tahun'),
+            'nomor_rekening' => $request->post('no_rek'),
+            'nama_program' => $request->post('master_program')
+        ]);
         return redirect('master_program')
                         ->with('success', 'Data master Program Berhasil Ditambahkan');
     }

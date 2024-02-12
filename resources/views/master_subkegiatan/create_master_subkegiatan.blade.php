@@ -58,7 +58,39 @@
                             <span class="error invalid-feedback">{{ $message }}</span>
                         @enderror
                     </div>
-
+                    <div class="form-group">
+                        <label>Pilih Bidang</label>
+                        <select class="form-control" name="bidang">
+                            <option selected>--PILIH--</option>
+                            @foreach($bidang as $b)
+                            <option value="{{ $b->nama_bidang }}">{{ $b->nama_bidang }}</option>
+                            @endforeach
+                          </select>
+                        @error('bidang')
+                            <span class="error invalid-feedback">{{ $message }} </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label>Pilih Program</label>
+                        <select class="form-control" name="program" id="program" onchange="pilihProgram()">
+                            <option selected>--PILIH--</option>
+                            @foreach($program as $p)
+                            <option value="{{ $p->nama_program }}">{{ $p->nama_program }}</option>
+                            @endforeach
+                          </select>
+                        @error('program')
+                            <span class="error invalid-feedback">{{ $message }} </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label>Pilih Kegiatan</label>
+                        <select class="form-control" name="kegiatan" id="kegiatan">
+                            <option selected>--PILIH--</option>
+                          </select>
+                        @error('kegiatan')
+                            <span class="error invalid-feedback">{{ $message }} </span>
+                        @enderror
+                    </div>
                     <div class="form-group">
                         <label>Nomor Rekening</label>
                         <input class="form-control @error('rekening_program') is-invalid @enderror"
@@ -68,47 +100,6 @@
                             <span class="error invalid-feedback">{{ $message }} </span>
                         @enderror
                     </div>
-
-                    <div class="form-group">
-                        <label>Nama Program</label>
-                        <input class="form-control @error('nama_program') is-invalid @enderror"
-                            value="{{ isset($master_subkegiatan) ? $master_subkegiatan->nama_program : old('nama_program') }}"
-                            name="nama_program" type="text" />
-                        @error('nama_program')
-                            <span class="error invalid-feedback">{{ $message }} </span>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label>Rekening Kegiatan</label>
-                        <input class="form-control @error('rekening_kegiatan') is-invalid @enderror"
-                            value="{{ isset($master_subkegiatan) ? $master_subkegiatan->rekening_kegiatan : old('rekening_kegiatan') }}"
-                            name="rekening_kegiatan" type="text" />
-                        @error('rekening_kegiatan')
-                            <span class="error invalid-feedback">{{ $message }} </span>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label>Nama Kegiatan</label>
-                        <input class="form-control @error('nama_kegiatan') is-invalid @enderror"
-                            value="{{ isset($master_subkegiatan) ? $master_subkegiatan->nama_kegiatan : old('nama_kegiatan') }}"
-                            name="nama_kegiatan" type="text" />
-                        @error('nama_kegiatan')
-                            <span class="error invalid-feedback">{{ $message }} </span>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label>Rekening SubKegiatan</label>
-                        <input class="form-control @error('rekening_subkegiatan') is-invalid @enderror"
-                            value="{{ isset($master_subkegiatan) ? $master_subkegiatan->rekening_subkegiatan : old('rekening_subkegiatan') }}"
-                            name="rekening_subkegiatan" type="text" />
-                        @error('rekening_subkegiatan')
-                            <span class="error invalid-feedback">{{ $message }} </span>
-                        @enderror
-                    </div>
-
                     <div class="form-group">
                         <label>Nama SubKegiatan</label>
                         <input class="form-control @error('nama_subkegiatan') is-invalid @enderror"
@@ -153,7 +144,28 @@
 @endpush
 
 @push('custom_js')
-    {{-- <script>
-  alert('Halaman Home')
-</script> --}}
+<script>
+    const pilihProgram = () => {
+        let program = document.querySelector('#program').value;
+        $.ajax({
+            url: '/get-kegiatan',
+            method: 'GET',
+            data: {
+                program: program,
+            },
+            success: function(response) {
+                let kegiatan = document.querySelector('#kegiatan');
+                let option = '';
+                option += '<option selected>--PILIH--</option>';
+                response.forEach(res => {
+                    option += `<option value="${res.nama_kegiatan}">${res.nama_kegiatan}</option>`
+                });
+                kegiatan.innerHTML = option;
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+        });
+    }
+</script>
 @endpush

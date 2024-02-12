@@ -9,7 +9,7 @@ class Master_kegiatan extends Model
 {
     use HasFactory;
 
-    protected $table = 'master_kegiatan';
+    protected $table = 'master_kegiatans';
 
     protected $fillable = [
         'rekening_program',

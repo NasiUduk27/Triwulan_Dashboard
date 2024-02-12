@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bidang;
+use App\Models\Master_program;
 use App\Models\Master_subkegiatan;
 use Illuminate\Http\Request;
 
@@ -31,8 +33,16 @@ class MasterSubController extends Controller
      */
     public function create()
     {
+        $bidang = Bidang::all();
+        $program = Master_program::all();
         return view('master_subkegiatan.create_master_subkegiatan')
-                    ->with('url_form', url('/master_subkegiatan'));
+                    ->with('url_form', url('/master_subkegiatan'))
+                    ->with('bidang', $bidang)
+                    ->with('program', $program);
+    }
+
+    public function getKegiatan(){
+
     }
 
       /**
