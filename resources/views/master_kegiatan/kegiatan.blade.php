@@ -31,7 +31,7 @@
                     </form>
                 </div>
 
-                <a href="{{ url('kegiatan/create') }}" class="btn btn-sm btn-success my-2">Tambah Kegiatan Baru</a>
+                <a href="{{ url('master_kegiatan/create') }}" class="btn btn-sm btn-success my-2">Tambah Kegiatan Baru</a>
 
                 <!-- Main content -->
                 <section class="content">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Jaket;
 use App\Models\Master_kegiatan;
+use App\Models\Master_program;
 use Illuminate\Http\Request;
 
 class KegiatanController extends Controller
@@ -25,10 +26,10 @@ class KegiatanController extends Controller
      */
     public function create()
     {
-        $data = Master_kegiatan::select('merk_jaket')->get();
+        $data = Master_program::all();
 
         return view('master_kegiatan.create_kegiatan')
-            ->with('url_form', url('/kegiatan'))->with('data', $data);
+            ->with('url_form', url('/master_kegiatan'))->with('data', $data);
     }
 
     /**
@@ -39,9 +40,20 @@ class KegiatanController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate(
-        //     []
-        // ) 
+        $program = Master_program::where($request->program, 'id')->first();
+
+        $insert = Master_kegiatan::create([
+            'rekening_program' => $program->rekening_program,
+            'nama_program' => $program->nama_program,
+            'rekening_kegiatan' => $request->rekening_kegiatan,
+            'nama_kegiatan' => $request->nama_kegiatan
+        ]);
+
+        if ($insert) {
+            return redirect('master_kegiatan');
+        } else {
+            return back()->with('error', 'Masih Ada Error');
+        }
     }
 
     /**
