@@ -49,7 +49,8 @@
                         </div>
                     </form>
 
-                    <a href="{{ url('indkegiatan/create') }}" class="btn btn-sm btn-success my-2">Tambah Indikator</a>
+                    <a href="{{ url('indikator_kegiatan/create') }}" class="btn btn-sm btn-success my-2">Tambah
+                        Indikator</a>
 
                     <table class="table table-bordered table-striped">
                         <thead>
@@ -65,43 +66,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <td>1</td>
-                            <td>1234567</td>
-                            <td>Lalala</td>
-                            <td>wer</td>
-                            <td>2</td>
-                            <td>2</td>
-                            <td>23.00</td>
-                            <td>
-                                <a href="" class="btn btn-sm btn-danger">Hapus</a>
-                                <a href="" class="btn btn-sm btn-warning">Edit</a>
-                            </td>
-                            {{-- @if ($indikator_kegiatan->count() > 0)
-                                @foreach ($indikator_kegiatan as $i => $t)
-                                    <tr>
-                                        <td>{{ ++$i }}</td>
-                                        <td>{{ $t->merk_sb }}</td>
-                                        <td>{{ $t->warna }}</td>
-                                        <td>{{ $t->sewaperhari }}</td>
-                                        <td>
-                                            <!-- Bikin tombol edit dan delete -->
-                                            <a href="{{ url('/indkegiatan/' . $t->id . '/edit') }}"
-                                                class="btn btn-sm btn-warning">edit</a>
-
-                                            <form method="POST" action="{{ url('/indkegiatan/' . $t->id) }}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger"
-                                                    onclick="return confirmDelete()">hapus</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            @else
+                            @foreach ($data as $i => $datas)
                                 <tr>
-                                    <td colspan="6" class="text-center">Data tidak ada</td>
+                                    <td>{{ ++$i }}</td>
+                                    <td>{{ $datas->rekening_program }}</td>
+                                    <td>{{ $datas->kegiatan }}</td>
+                                    <td>{{ $datas->indikator }}</td>
+                                    <td>{{ $datas->target }}</td>
+                                    <td>{{ $datas->satuan }}</td>
+                                    <td>{{ $datas->pagu }}</td>
+                                    <td>
+                                        <a href="{{ url('/indikator_kegiatan/' . $datas->id . '/edit') }}"
+                                            class="btn btn-sm btn-warning">edit</a>
+
+                                        <form method="POST" action="{{ url('/indikator_kegiatan/' . $datas->id) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger"
+                                                onclick="confirmDelete()">hapus</button>
+                                        </form>
+                                    </td>
                                 </tr>
-                            @endif --}}
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -123,29 +109,7 @@
     </div>
 @endsection
 
-@push('custom_css')
-    <style>
-        th {}
-
-        /* .card{
-                                                                                                                                                                                                                                                                                                                                                                                                                                                      background:green;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                      color:aliceblue;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                      transition: 0.5s;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                  }
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                  .card:hover{
-                                                                                                                                                                                                                                                                                                                                                                                                                                                      background: aqua;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                      color: blue;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                      transform:scale(0.9);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                  } */
-    </style>
-@endpush
-
 @push('custom_js')
-    {{-- <script>
-  alert('Halaman Home')
-</script> --}}
-
     <script>
         function confirmDelete() {
             if (confirm('Apakah Anda yakin? Data akan dihapus. Apakah Anda ingin melanjutkan?')) {

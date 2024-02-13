@@ -17,15 +17,16 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('indkegiatan.store') }}">
+                    <form method="POST" action="{{ $url_form }}">
                         @csrf
                         {!! isset($indikator_kegiatan) ? method_field('PUT') : '' !!}
 
                         <div class="form-group">
                             <label>Pilih Kegiatan</label>
                             <select name="kegiatan" class="form-control select3">
-                                @foreach ($data as $d)
-                                    <option value="{{ $d->id }}">{{ $d->merk_tenda }}</option>
+                                <option>--PILIH--</option>
+                                @foreach ($master_kegiatan as $d)
+                                    <option value="{{ $d->id }}">{{ $d->nama_kegiatan }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -33,7 +34,7 @@
                         <div class="form-group">
                             <label>Indikator</label>
                             <input class="form-control @error('ind') is-invalid @enderror"
-                                value="{{ isset($indikator_kegiatan) ? $indikator_kegiatan->nama : old('ind') }}"
+                                value="{{ isset($indikator_kegiatan) ? $indikator_kegiatan->indikator : old('ind') }}"
                                 name="ind" type="text" />
                             @error('ind')
                                 <span class="error invalid-feedback">{{ $message }}</span>
@@ -43,7 +44,7 @@
                         <div class="form-group">
                             <label>Target</label>
                             <input class="form-control @error('target') is-invalid @enderror"
-                                value="{{ isset($indikator_kegiatan) ? $indikator_kegiatan->nama : old('target') }}"
+                                value="{{ isset($indikator_kegiatan) ? $indikator_kegiatan->target : old('target') }}"
                                 name="target" type="number" />
                             @error('target')
                                 <span class="error invalid-feedback">{{ $message }}</span>
@@ -61,11 +62,11 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Anggaran (Rp)</label>
-                            <input class="form-control @error('anggar') is-invalid @enderror"
-                                value="{{ isset($indikator_kegiatan) ? $indikator_kegiatan->anggar : old('anggar') }}"
-                                name="anggar" type="text" />
-                            @error('anggar')
+                            <label>Pagu (Rp)</label>
+                            <input class="form-control @error('pagu') is-invalid @enderror"
+                                value="{{ isset($indikator_kegiatan) ? $indikator_kegiatan->pagu : old('pagu') }}"
+                                name="pagu" type="text" />
+                            @error('pagu')
                                 <span class="error invalid-feedback">{{ $message }}</span>
                             @enderror
                         </div>
