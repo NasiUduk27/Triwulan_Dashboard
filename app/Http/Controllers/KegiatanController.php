@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Jaket;
 use App\Models\Master_kegiatan;
 use App\Models\Master_program;
 use Illuminate\Http\Request;
@@ -14,9 +13,23 @@ class KegiatanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('master_kegiatan.kegiatan');
+        if ($request->has('master_kegiatan')) {
+            $master_kegiatan = Master_kegiatan::where('nama_program', 'LIKE', $request->master_kegiatan . '%')->paginate(2)->withQueryString();
+        } else {
+            $master_kegiatan = Master_kegiatan::paginate(2);
+        }
+        return view('master_kegiatan.kegiatan', [
+            'master_kegiatan' => $master_kegiatan
+        ]);
+    }
+
+    public function getKegiatan(Request $request)
+    {
+        $program = $request->get('program');
+        $master_kegiatan = Master_kegiatan::where('nama_program', $program)->get();
+        return response()->json($master_kegiatan);
     }
 
     /**
@@ -26,10 +39,10 @@ class KegiatanController extends Controller
      */
     public function create()
     {
-        $data = Master_program::all();
-
+        $program = Master_program::all();
         return view('master_kegiatan.create_kegiatan')
-            ->with('url_form', url('/master_kegiatan'))->with('data', $data);
+                    ->with('url_form', url('/master_kegiatan'))
+                    ->with('program', $program);
     }
 
     /**
@@ -40,20 +53,9 @@ class KegiatanController extends Controller
      */
     public function store(Request $request)
     {
-        $program = Master_program::where($request->program, 'id')->first();
-
-        $insert = Master_kegiatan::create([
-            'rekening_program' => $program->rekening_program,
-            'nama_program' => $program->nama_program,
-            'rekening_kegiatan' => $request->rekening_kegiatan,
-            'nama_kegiatan' => $request->nama_kegiatan
-        ]);
-
-        if ($insert) {
-            return redirect('master_kegiatan');
-        } else {
-            return back()->with('error', 'Masih Ada Error');
-        }
+        // $request->validate(
+        //     []
+        // ) 
     }
 
     /**
@@ -75,7 +77,10 @@ class KegiatanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $master_kegiatan = Master_kegiatan::find($id);
+        return view('master_kegiatan.create_kegiatan')
+            ->with('master_kegiatan', $master_kegiatan)
+            ->with('url_form', url('/master_kegiatan/' . $id));
     }
 
     /**
@@ -87,7 +92,16 @@ class KegiatanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'rekening_program' => 'required|string|max:30',
+            'nama_program' => 'required|string|max:20',
+            'rekening_kegiatan' => 'required|string|max:20',
+            'nama_kegiatan' => 'required|string|max:20',
+        ]);
+
+        $data = Master_kegiatan::where('id', '=', $id)->update($request->except(['_token', '_method']));
+        return redirect('master_kegiatan')
+            ->with('success', 'Data Kegiatan Berhasil Diubah');
     }
 
     /**
@@ -98,6 +112,8 @@ class KegiatanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Master_kegiatan::where('id', '=', $id)->delete();
+        return redirect('master_kegiatan')
+            ->with('success', 'data Berhasil Dihapus');
     }
 }

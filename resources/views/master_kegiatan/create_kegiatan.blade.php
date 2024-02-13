@@ -44,49 +44,50 @@
                         {{-- {!! isset($master_kegiatan) ? method_field('PUT') : '' !!} --}}
 
                         <div class="form-group">
-                            <label for="tahun_aggaran">Tahun Anggaran</label>
-                            <select class="form-control select2" style="width: 100%;" id="tahun_anggaran"
-                                name="tahun_anggaran">
+                            <label>Tahun Anggaran</label>
+                            <select class="form-control @error('tahun') is-invalid @enderror" name="tahun">
+                                <option value="" selected disabled>Pilih Tahun</option>
                                 @php
-                                    $startYear = 2022;
-                                    //date('Y'); // Tahun mulai (tahun sekarang)
-                                    $endYear = $startYear + 5; // Tambahkan 5 tahun ke depan (ganti sesuai kebutuhan)
+                                    $currentYear = date('Y');
+                                    $startYear = 2022; // Tahun awal
                                 @endphp
-
-                                @for ($year = $startYear; $year <= $endYear; $year++)
-                                    <option value="{{ $year }}"
-                                        {{ old('tahun_anggaran') == $year ? 'selected' : '' }}>
-                                        {{ $year }}
-                                    </option>
+                                @for($year = $currentYear; $year >= $startYear; $year--)
+                                    <option value="{{ $year }}" {{ isset($master_kegiatan) && $master_kegiatan->tahun == $year ? 'selected' : '' }}>{{ $year }}</option>
                                 @endfor
                             </select>
+                            @error('tahun')
+                                <span class="error invalid-feedback">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Pilih Program</label>
-                            <select name="program"class="form-control select2">
-                                <option value=""></option>
-                                @foreach ($data as $d)
-                                    <option value="{{ $d->id }}">{{ $d->nama_program }}</option>
+                            <select class="form-control" name="program" id="program" onchange="pilihProgram()">
+                                <option selected>--PILIH--</option>
+                                @foreach($program as $p)
+                                <option value="{{ $p->nama_program }}">{{ $p->nama_program }}</option>
                                 @endforeach
-                            </select>
+                              </select>
+                            @error('program')
+                                <span class="error invalid-feedback">{{ $message }} </span>
+                            @enderror
                         </div>
 
                         <div class="form-group">
                             <label>Rekening Kegiatan</label>
                             <input class="form-control @error('nama') is-invalid @enderror"
-                                value="{{ isset($master_kegiatan) ? $master_kegiatan->nama : old('nama') }}" name="nama"
+                                value="{{ isset($master_kegiatan) ? $master_kegiatan->rekening_program : old('rekening_program') }}" name="rekening_program"
                                 type="text" />
-                            @error('nama')
+                            @error('rekening_program')
                                 <span class="error invalid-feedback">{{ $message }} </span>
                             @enderror
                         </div>
 
                         <div class="form-group">
                             <label>Nama Kegiatan</label>
-                            <input class="form-control @error('jumlah') is-invalid @enderror"
-                                value="{{ isset($master_kegiatan) ? $master_kegiatan->jumlah : old('jumlah') }}"
-                                name="jumlah" type="text" />
-                            @error('jumlah')
+                            <input class="form-control @error('nama_kegiatan') is-invalid @enderror"
+                                value="{{ isset($master_kegiatan) ? $master_kegiatan->nama_kegiatan : old('nama_kegiatan') }}"
+                                name="nama_kegiatan" type="text" />
+                            @error('nama_kegiatan')
                                 <span class="error invalid-feedback">{{ $message }} </span>
                             @enderror
                         </div>
