@@ -41,7 +41,7 @@
                 <div class="card-body">
                     <form method="POST" action="{{ $url_form }}">
                         @csrf
-                        {{-- {!! isset($master_kegiatan) ? method_field('PUT') : '' !!} --}}
+                        {!! isset($master_kegiatan) ? method_field('PUT') : '' !!}
 
                         <div class="form-group">
                             <label>Tahun Anggaran</label>
@@ -51,8 +51,10 @@
                                     $currentYear = date('Y');
                                     $startYear = 2022; // Tahun awal
                                 @endphp
-                                @for($year = $currentYear; $year >= $startYear; $year--)
-                                    <option value="{{ $year }}" {{ isset($master_kegiatan) && $master_kegiatan->tahun == $year ? 'selected' : '' }}>{{ $year }}</option>
+                                @for ($year = $currentYear; $year >= $startYear; $year--)
+                                    <option value="{{ $year }}"
+                                        {{ isset($master_kegiatan) && $master_kegiatan->tahun == $year ? 'selected' : '' }}>
+                                        {{ $year }}</option>
                                 @endfor
                             </select>
                             @error('tahun')
@@ -63,10 +65,13 @@
                             <label>Pilih Program</label>
                             <select class="form-control" name="program" id="program" onchange="pilihProgram()">
                                 <option selected>--PILIH--</option>
-                                @foreach($program as $p)
-                                <option value="{{ $p->nama_program }}">{{ $p->nama_program }}</option>
+                                @foreach ($program as $p)
+                                    <option value="{{ $p->id }}"
+                                        {{ isset($master_kegiatan) ? ($p->nama_program == $master_kegiatan->nama_program ? 'selected' : '') : '' }}>
+                                        {{ $p->nama_program }}
+                                    </option>
                                 @endforeach
-                              </select>
+                            </select>
                             @error('program')
                                 <span class="error invalid-feedback">{{ $message }} </span>
                             @enderror
@@ -75,9 +80,9 @@
                         <div class="form-group">
                             <label>Rekening Kegiatan</label>
                             <input class="form-control @error('nama') is-invalid @enderror"
-                                value="{{ isset($master_kegiatan) ? $master_kegiatan->rekening_program : old('rekening_program') }}" name="rekening_program"
-                                type="text" />
-                            @error('rekening_program')
+                                value="{{ isset($master_kegiatan) ? $master_kegiatan->rekening_kegiatan : old('rekening_kegiatan') }}"
+                                name="rekening_kegiatan" type="text" />
+                            @error('rekening_kegiatan')
                                 <span class="error invalid-feedback">{{ $message }} </span>
                             @enderror
                         </div>
@@ -106,16 +111,16 @@
         th {}
 
         /* .card{
-                                                                                                                                                                                                                                                                                                                                                          background:green;
-                                                                                                                                                                                                                                                                                                                                                          color:aliceblue;
-                                                                                                                                                                                                                                                                                                                                                          transition: 0.5s;
-                                                                                                                                                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          background:green;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          color:aliceblue;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          transition: 0.5s;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      }
 
-                                                                                                                                                                                                                                                                                                                                                      .card:hover{
-                                                                                                                                                                                                                                                                                                                                                          background: aqua;
-                                                                                                                                                                                                                                                                                                                                                          color: blue;
-                                                                                                                                                                                                                                                                                                                                                          transform:scale(0.9);
-                                                                                                                                                                                                                                                                                                                                                      } */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      .card:hover{
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          background: aqua;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          color: blue;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          transform:scale(0.9);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      } */
     </style>
 @endpush
 

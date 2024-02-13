@@ -41,8 +41,8 @@ class KegiatanController extends Controller
     {
         $program = Master_program::all();
         return view('master_kegiatan.create_kegiatan')
-                    ->with('url_form', url('/master_kegiatan'))
-                    ->with('program', $program);
+            ->with('url_form', url('/master_kegiatan'))
+            ->with('program', $program);
     }
 
     /**
@@ -53,9 +53,26 @@ class KegiatanController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate(
-        //     []
-        // ) 
+        $request->validate([
+            'program' => 'required',
+            'rekening_kegiatan' => 'required|string|max:20',
+            'nama_kegiatan' => 'required|string|max:20',
+        ]);
+
+        $cariProgram = Master_program::where('id', $request->program)->first();
+
+        $insert = new Master_kegiatan();
+        $insert->rekening_program = $cariProgram->nomor_rekening;
+        $insert->nama_program = $cariProgram->nama_program;
+        $insert->rekening_kegiatan = $request->rekening_kegiatan;
+        $insert->nama_kegiatan = $request->nama_kegiatan;
+        $insert->save();
+
+        if ($insert) {
+            return redirect('master_kegiatan')->with('success', 'Data Berhasil Ditambahkan');
+        } else {
+            return back()->with('error', 'Data Gagal Ditambahkan');
+        }
     }
 
     /**
@@ -77,10 +94,13 @@ class KegiatanController extends Controller
      */
     public function edit($id)
     {
-        $master_kegiatan = Master_kegiatan::find($id);
+        $program = Master_program::all();
+        $master_kegiatan = Master_kegiatan::where('id', $id)->first();
+
         return view('master_kegiatan.create_kegiatan')
+            ->with('url_form', url('/master_kegiatan/' . $id))
             ->with('master_kegiatan', $master_kegiatan)
-            ->with('url_form', url('/master_kegiatan/' . $id));
+            ->with('program', $program);
     }
 
     /**
@@ -93,15 +113,25 @@ class KegiatanController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'rekening_program' => 'required|string|max:30',
-            'nama_program' => 'required|string|max:20',
+            'program' => 'required',
             'rekening_kegiatan' => 'required|string|max:20',
             'nama_kegiatan' => 'required|string|max:20',
         ]);
 
-        $data = Master_kegiatan::where('id', '=', $id)->update($request->except(['_token', '_method']));
-        return redirect('master_kegiatan')
-            ->with('success', 'Data Kegiatan Berhasil Diubah');
+        $cariProgram = Master_program::where('id', $request->program)->first();
+
+        $update = Master_kegiatan::where('id', $id)->update([
+            'rekening_program' => $cariProgram->nomor_rekening,
+            'nama_program' => $cariProgram->nama_program,
+            'rekening_kegiatan' => $request->rekening_kegiatan,
+            'nama_kegiatan' => $request->nama_kegiatan
+        ]);
+
+        if ($update) {
+            return redirect('master_kegiatan')->with('success', 'Data Berhasil Ditambahkan');
+        } else {
+            return back()->with('error', 'Data Gagal Ditambahkan');
+        }
     }
 
     /**
