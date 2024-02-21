@@ -45,14 +45,14 @@ class MasterProgramController extends Controller
     {
         $request->validate([
             'tahun' => 'required|string|max:4',
-            'no_rek' => 'required|string|max:30',
-            'master_program' => 'required|string|max:20',
+            'nomor_rekening' => 'required|string|max:30',
+            'nama_program' => 'required|string',
 
         ]);
         Master_program::create([
             'tahun' => $request->post('tahun'),
-            'nomor_rekening' => $request->post('no_rek'),
-            'nama_program' => $request->post('master_program')
+            'nomor_rekening' => $request->post('nomor_rekening'),
+            'nama_program' => $request->post('nama_program')
         ]);
         return redirect('master_program')
                         ->with('success', 'Data master Program Berhasil Ditambahkan');
@@ -95,7 +95,7 @@ class MasterProgramController extends Controller
         $request->validate([
             'tahun' => 'required|string|max:4',
             'nomor_rekening' => 'required|string|max:30',
-            'nama_program' => 'required|string|max:20',
+            'nama_program' => 'required|string',
 
         ]);
 

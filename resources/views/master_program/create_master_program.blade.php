@@ -61,16 +61,16 @@
                 </div>
                 <div class="form-group">
                     <label>No Rekening</label>
-                    <input class="form-control @error('no_rek') is-invalid @enderror" value="{{ isset($master_program)? $master_program->no_rek : old('no_rek') }}" name="no_rek" type="text" />
-                    @error('no_rek')
+                    <input class="form-control @error('nomor_rekening') is-invalid @enderror" value="{{ isset($master_program)? $master_program->nomor_rekening : old('nomor_rekening') }}" name="nomor_rekening" type="text" />
+                    @error('nomor_rekening')
                         <span class="error invalid-feedback">{{ $message }} </span>
                     @enderror
                 </div>
 
                 <div class="form-group">
                     <label>Nama Program</label>
-                    <input class="form-control @error('master_program') is-invalid @enderror" value="{{ isset($master_program)? $master_program->master_program : old('master_program') }}" name="master_program" type="text"/>
-                    @error('master_program')
+                    <input class="form-control @error('nama_program') is-invalid @enderror" value="{{ isset($master_program)? $master_program->nama_program : old('nama_program') }}" name="nama_program" type="text"/>
+                    @error('nama_program')
                         <span class="error invalid-feedback">{{ $message }} </span>
                     @enderror
                 </div>
