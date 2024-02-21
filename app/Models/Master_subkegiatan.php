@@ -18,5 +18,7 @@ class Master_subkegiatan extends Model
         'nama_kegiatan',
         'rekening_subkegiatan',
         'nama_subkegiatan',
+        'nama_bidang',
+        'tahun',
     ];
 }

@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('nama_kegiatan');
             $table->string('rekening_subkegiatan');
             $table->string('nama_subkegiatan');
+            $table->string('nama_bidang');
+            $table->string('tahun');
             $table->timestamps();
         });
     }

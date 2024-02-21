@@ -127,6 +127,35 @@
                     </a>
                 </li>
 
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            IKU
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ url('/master_program') }}"
+                                class="nav-link {{ request()->is('/') ? 'active' : '' }}" class="nav-link">
+                                <i class="fas fa-file nav-icon"></i>
+                                <p>Sub IKU A</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ url('/master_program') }}"
+                                class="nav-link {{ request()->is('/') ? 'active' : '' }}" class="nav-link">
+                                <i class="fas fa-file nav-icon"></i>
+                                <p>Realisasi IKU B</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
         </nav>
         <!-- /.sidebar-menu -->
     </div>

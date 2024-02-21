@@ -60,43 +60,46 @@
                     </div>
                     <div class="form-group">
                         <label>Pilih Bidang</label>
-                        <select class="form-control" name="bidang">
+                        <select class="form-control" name="nama_bidang" id="nama_bidang">
                             <option selected>--PILIH--</option>
                             @foreach($bidang as $b)
                             <option value="{{ $b->nama_bidang }}">{{ $b->nama_bidang }}</option>
                             @endforeach
                           </select>
-                        @error('bidang')
+                        @error('nama_bidang')
                             <span class="error invalid-feedback">{{ $message }} </span>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label>Pilih Program</label>
-                        <select class="form-control" name="program" id="program" onchange="pilihProgram()">
+                        <select class="form-control" name="nama_program" id="nama_program" onchange="pilihProgram()">
                             <option selected>--PILIH--</option>
                             @foreach($program as $p)
-                            <option value="{{ $p->nama_program }}">{{ $p->nama_program }}</option>
+                            <option value="{{ $p->id }}">{{ $p->nama_program }}</option>
                             @endforeach
                           </select>
-                        @error('program')
+                        @error('nama_program')
                             <span class="error invalid-feedback">{{ $message }} </span>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label>Pilih Kegiatan</label>
-                        <select class="form-control" name="kegiatan" id="kegiatan">
+                        <select class="form-control" name="nama_kegiatan" id="nama_kegiatan">
                             <option selected>--PILIH--</option>
+                            @foreach($master_kegiatan as $k)
+                            <option value="{{ $k->id }}">{{ $k->nama_kegiatan }}</option>
+                            @endforeach
                           </select>
-                        @error('kegiatan')
+                        @error('nama_kegiatan')
                             <span class="error invalid-feedback">{{ $message }} </span>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label>Nomor Rekening</label>
-                        <input class="form-control @error('rekening_program') is-invalid @enderror"
-                            value="{{ isset($master_subkegiatan) ? $master_subkegiatan->rekening_program : old('rekening_program') }}"
-                            name="rekening_program" type="text" />
-                        @error('rekening_program')
+                        <input class="form-control @error('rekening_subkegiatan') is-invalid @enderror"
+                            value="{{ isset($master_subkegiatan) ? $master_subkegiatan->rekening_subkegiatan : old('rekening_subkegiatan') }}"
+                            name="rekening_subkegiatan" type="text" />
+                        @error('rekening_subkegiatan')
                             <span class="error invalid-feedback">{{ $message }} </span>
                         @enderror
                     </div>

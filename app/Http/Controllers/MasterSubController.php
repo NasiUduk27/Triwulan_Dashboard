@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bidang;
+use App\Models\Master_kegiatan;
 use App\Models\Master_program;
 use App\Models\Master_subkegiatan;
 use Illuminate\Http\Request;
@@ -35,14 +36,20 @@ class MasterSubController extends Controller
     {
         $bidang = Bidang::all();
         $program = Master_program::all();
+        $master_kegiatan = Master_kegiatan::all();
         return view('master_subkegiatan.create_master_subkegiatan')
                     ->with('url_form', url('/master_subkegiatan'))
                     ->with('bidang', $bidang)
+                    ->with('master_kegiatan', $master_kegiatan)
                     ->with('program', $program);
     }
 
-    public function getKegiatan(){
-
+    
+    public function getKegiatan(Request $request)
+    {
+        $program = $request->get('program');
+        $master_kegiatan = Master_kegiatan::where('nama_program', $program)->get();
+        return response()->json($master_kegiatan);
     }
 
       /**
@@ -53,16 +60,31 @@ class MasterSubController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
-            'rekening_program' => 'required|string|max:30',
-            'nama_program' => 'required|string|max:20',
-            'rekening_kegiatan' => 'required|string|max:20',
-            'nama_kegiatan' => 'required|string|max:20',
-            'rekening_subkegiatan' => 'required|string|max:20',
-            'nama_subkegiatan' => 'required|string|max:20',
+            'tahun' => 'required|string',           
+            'nama_bidang' => 'required|string',  
+            'nomor_rekening' => 'required|string',    
+            'nama_program' => 'required',
+            'rekening_kegiatan' => 'required|string',
+            'nama_kegiatan' => 'required|string',
+            'rekening_subkegiatan' => 'required|string',
+            'nama_subkegiatan' => 'required|string',
         ]);
-
-        $data = Master_subkegiatan::create($request->except(['_token']));
+        $data = Master_program::where('id', $request->input('nama_program'))->first();
+        $data1 = Master_kegiatan::where('id', $request->input('nama_kegiatan'))->first();
+        // dd($data1);
+        // $data = Master_subkegiatan::create($request->except(['_token']));
+        Master_subkegiatan::create([
+            'tahun' => $request->input('tahun'),
+            'nama_bidang' => $request->input('nama_bidang'),
+            'rekening_program' => $data->nomor_rekening,
+            'nama_program' => $data->nama_program,
+            'rekening_kegiatan' => $data1->rekening_kegiatan,
+            'nama_kegiatan' => $data1->nama_kegiatan,
+            'rekening_subkegiatan' => $request->input('rekening_subkegiatan'),
+            'nama_subkegiatan' => $request->input('nama_subkegiatan'),
+        ]);
         return redirect('master_subkegiatan')
                         ->with('success', 'Data SubKegiatan Berhasil Ditambahkan');
     }
@@ -86,10 +108,16 @@ class MasterSubController extends Controller
      */
     public function edit($id)
     {
+        $bidang = Bidang::all();
+        $program = Master_program::all();
+        $master_kegiatan = Master_kegiatan::all();
         $master_subkegiatan = Master_subkegiatan::find($id);
         return view('master_subkegiatan.create_master_subkegiatan')
                     ->with('master_subkegiatan', $master_subkegiatan)
-                    ->with('url_form', url('/master_subkegiatan/'. $id));
+                    ->with('url_form', url('/master_subkegiatan/'. $id))
+                    ->with('bidang', $bidang)
+                    ->with('master_kegiatan', $master_kegiatan)
+                    ->with('program', $program);
     }
 
     /**
@@ -102,15 +130,28 @@ class MasterSubController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'rekening_program' => 'required|string|max:30',
-            'nama_program' => 'required|string|max:20',
-            'rekening_kegiatan' => 'required|string|max:20',
-            'nama_kegiatan' => 'required|string|max:20',
-            'rekening_subkegiatan' => 'required|string|max:20',
-            'nama_subkegiatan' => 'required|string|max:20',
+            'tahun' => 'required|string',           
+            'nama_bidang' => 'required|string',  
+            'nomor_rekening' => 'required|string',    
+            'nama_program' => 'required',
+            'rekening_kegiatan' => 'required|string',
+            'nama_kegiatan' => 'required|string',
+            'rekening_subkegiatan' => 'required|string',
+            'nama_subkegiatan' => 'required|string',
         ]);
 
-        $data = Master_subkegiatan::where('id', '=', $id)->update($request->except(['_token', '_method']));
+        $data = Master_program::where('id', $request->input('nama_program'))->first();
+        $data1 = Master_kegiatan::where('id', $request->input('nama_kegiatan'))->first();
+        $data = Master_subkegiatan::where('id', '=', $id)->update([
+            'tahun' => $request->input('tahun'),
+            'nama_bidang' => $request->input('nama_bidang'),
+            'rekening_program' => $data->nomor_rekening,
+            'nama_program' => $data->nama_program,
+            'rekening_kegiatan' => $data1->rekening_kegiatan,
+            'nama_kegiatan' => $data1->nama_kegiatan,
+            'rekening_subkegiatan' => $request->input('rekening_subkegiatan'),
+            'nama_subkegiatan' => $request->input('nama_subkegiatan'),
+        ]);
         return redirect('master_subkegiatan')
                         ->with('success', 'Data SubKegiatan Berhasil Diubah');
     }
