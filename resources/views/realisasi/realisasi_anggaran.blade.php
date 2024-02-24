@@ -32,15 +32,6 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">LIST</h3>
-
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
                 </div>
 
                 <div class="card-body">
@@ -53,18 +44,10 @@
                             </form>
                         </div>
                     </div>
-
-{{--
-                    <a href="{{ url('realisasi/create') }}" class="btn btn-sm btn-success my-2">Tambah Data</a> --}}
-
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th colspan="8" style="text-align: center;">Realisasi</th>
+                                <th colspan="14" style="text-align: center;">Realisasi</th>
                             </tr>
                             <tr>
                                 <th rowspan="2" style="text-align: center;">Program</th>
@@ -77,7 +60,7 @@
                                 <th colspan="2">Triwulan 4</th>
                                 <th rowspan="2">Keterangan</th>
                                 <th rowspan="2">Aksi</th>
-                                
+
 
                             </tr>
                             <tr>
@@ -91,37 +74,27 @@
                                 <th>Anggaran</th>
                             <tr>
 
-                            </thead>
-                            <tbody>
-                                @if ($realisasi->count() > 0)
+                        </thead>
+                        <tbody>
+                            @if ($realisasi->count() > 0)
                                 @foreach ($realisasi as $i => $t)
-                                {{-- <tr>
-                                    <th>Kinerja</th>
-                                    <th>Anggaran</th>
-                                    <th>Kinerja</th>
-                                    <th>Anggaran</th>
-                                    <th>Kinerja</th>
-                                    <th>Anggaran</th>
-                                    <th>Kinerja</th>
-                                    <th>Anggaran</th> --}}
-
                                     <td>
-                                            <!-- Bikin tombol edit dan delete -->
-                                            <a href="{{ url('/realisasi/' . $t->id . '/edit') }}"
-                                                class="btn btn-sm btn-warning">edit</a>
+                                        <!-- Bikin tombol edit dan delete -->
+                                        <a href="{{ url('/realisasi/' . $t->id . '/edit') }}"
+                                            class="btn btn-sm btn-warning">edit</a>
 
-                                            <form method="POST" action="{{ url('/realisasi/' . $t->id) }}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger"
-                                                    onclick="confirmDelete()">hapus</button>
-                                            </form>
-                                        </td>
-                                </tr>
+                                        <form method="POST" action="{{ url('/realisasi/' . $t->id) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger"
+                                                onclick="confirmDelete()">hapus</button>
+                                        </form>
+                                    </td>
+                                    </tr>
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="6" class="text-center">Data tidak ada</td>
+                                    <td colspan="14" class="text-center">Data tidak ada</td>
                                 </tr>
                             @endif
                         </tbody>
@@ -134,10 +107,6 @@
                     </div>
                 </div>
                 <!-- /.card-body -->
-                <div class="card-footer">
-                    Terima Kasih
-                </div>
-                <!-- /.card-footer-->
             </div>
             <!-- /.card -->
 
@@ -151,17 +120,17 @@
     <style>
         th {}
 
-        /* .card{
-              background:green;
-              color:aliceblue;
-              transition: 0.5s;
-          }
+        .card {
+            overflow: auto;
+        }
 
-          .card:hover{
-              background: aqua;
-              color: blue;
-              transform:scale(0.9);
-          } */
+        .table {
+            overflow: auto;
+        }
+
+        th {
+            text-align: center;
+        }
     </style>
 @endpush
 
@@ -174,10 +143,9 @@
         function confirmDelete() {
             if (confirm('Apakah Anda yakin? Data akan dihapus. Apakah Anda ingin melanjutkan?')) {
                 document.getElementById('form').submit();
-            }else {
+            } else {
                 event.preventDefault();
             }
         }
     </script>
 @endpush
-

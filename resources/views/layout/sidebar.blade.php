@@ -147,7 +147,7 @@
                     </ul>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ url('/master_program') }}"
+                            <a href="{{ url('/realisasi') }}"
                                 class="nav-link {{ request()->is('/') ? 'active' : '' }}" class="nav-link">
                                 <i class="fas fa-file nav-icon"></i>
                                 <p>Realisasi IKU B</p>
@@ -155,7 +155,6 @@
                         </li>
                     </ul>
                 </li>
-
         </nav>
         <!-- /.sidebar-menu -->
     </div>
